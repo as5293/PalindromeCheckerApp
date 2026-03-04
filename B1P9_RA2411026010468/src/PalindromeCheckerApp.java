@@ -2,7 +2,6 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // UC2 - Hardcoded Palindrome
         String input = "madam";
         boolean isPalindrome = true;
 
