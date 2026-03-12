@@ -1,32 +1,31 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.Scanner;
 
-public class PalindromCheckerApp{
-
+public class PalindromCheckerApp {
     public static void main(String[] args) {
 
-        String input = "civic";
+        Scanner scanner = new Scanner(System.in);
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        System.out.print("Input : ");
+        String input = scanner.nextLine();
 
-        for (char c : input.toCharArray()) {
-            queue.add(c);
-            stack.push(c);
+        boolean result = check(input, 0, input.length() - 1);
+
+        System.out.println("Is Palindrome? : " + result);
+
+        scanner.close();
+    }
+
+    private static boolean check(String s, int start, int end) {
+
+        if (start >= end) {
+            return true;
         }
 
-        boolean isPalindrome = true;
-
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
-                isPalindrome = false;
-                break;
-            }
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
         }
 
+        return check(s, start + 1, end - 1);
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
